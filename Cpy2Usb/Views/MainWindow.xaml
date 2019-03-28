@@ -1,0 +1,89 @@
+﻿<controls:MetroWindow WindowStartupLocation="CenterScreen"
+                      xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                      x:Class="Cpy2Usb.Views.MainWindow"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                      xmlns:local="clr-namespace:Cpy2Usb"
+                      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+                      xmlns:command="http://www.galasoft.ch/mvvmlight"
+                      mc:Ignorable="d"
+                      Title="{Binding APPTITLE, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                      Height="287" Width="500" ResizeMode="CanMinimize" x:Name="MetroWindow">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Closing">
+            <command:EventToCommand Command="{Binding OnWindowClosingEventCommand}" PassEventArgsToCommand="True" />
+        </i:EventTrigger>
+        <!--<i:EventTrigger EventName="Closed">
+            <command:EventToCommand Command="{Binding ClosedCommand}" />
+        </i:EventTrigger>-->
+    </i:Interaction.Triggers>
+
+    <Grid>
+        <DockPanel VerticalAlignment="Top">
+            <!-- File Menu -->
+            <Menu DockPanel.Dock="Top" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <MenuItem Header="_File">
+                    <MenuItem Header="_Settings" Command="{Binding ShowSettingsWindowCommand, Mode=OneWay}" />
+                    <Separator />
+                    <MenuItem Header="_Exit" Command="{Binding ExitMainWindowCommand, Mode=OneWay}"
+                              CommandParameter="{Binding ElementName=MetroWindow}" />
+                </MenuItem>
+                <MenuItem Header="_Help">
+                    <MenuItem Header="_About" Command="{Binding ShowAboutWindowCommand, Mode=OneWay}" />
+                </MenuItem>
+            </Menu>
+
+            <StackPanel DockPanel.Dock="Top">
+                <Label Content="Please input a folder path from which to copy data from: " />
+            </StackPanel>
+            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+
+                <!-- Source Folder TextBox -->
+                <TextBox VerticalAlignment="Top" HorizontalAlignment="Left"
+                         TextWrapping="Wrap"
+                         Text="{Binding SourceFolder, Mode=TwoWay, 
+                            UpdateSourceTrigger=PropertyChanged}"
+                         IsEnabled="{Binding SourceFolderTextBoxIsEnabled}"
+                         Width="370" BorderThickness="2" BorderBrush="DarkRed"
+                         Margin="3, 0, 0, 0" />
+
+                <!-- TODO: [better] Open Folder Browser Dialog -->
+                <!-- Open Folder Browser Dialog -->
+                <Button VerticalAlignment="Top" HorizontalAlignment="Right"
+                        Content="Browse" Width="75"
+                        Margin="15, 0, 0, 0"
+                        Command="{Binding BrowseButtonClickedCommand}"
+                        IsEnabled="{Binding SourceFolderTextBoxIsEnabled}" />
+            </StackPanel>
+
+            <!-- Start / Stop monitoring buttons -->
+            <StackPanel DockPanel.Dock="Bottom" Margin="0, 15, 0, 0">
+                <Button Content="Start Monitoring" Height="50"
+                        Command="{Binding StartMonitoringButtonClicked}"
+                        IsEnabled="{Binding StartMonitoringButtonIsEnabled, 
+                            Mode=TwoWay, 
+                            UpdateSourceTrigger=PropertyChanged}"
+                        ToolTip="Start listening for new USB drive inserts" />
+                <Button Content="Stop Monitoring" Height="50" Margin="0, 10, 0, 0"
+                        Command="{Binding StopMonitoringButtonClicked}"
+                        IsEnabled="{Binding StopMonitoringButtonIsEnabled, 
+                            Mode=TwoWay, 
+                            UpdateSourceTrigger=PropertyChanged}"
+                        ToolTip="Stop listening for new USB drive inserts" />
+
+                <!-- (bottom) Status Bar for Hints/Tooltips & Copyright info -->
+                <StatusBar Margin="0, 15, 0, 0">
+                    <StatusBarItem>
+                        <Label x:Name="StatusLabel"
+                               Content="{Binding StatusLabelContent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    </StatusBarItem>
+                </StatusBar>
+
+            </StackPanel>
+        </DockPanel>
+
+    </Grid>
+
+</controls:MetroWindow>
