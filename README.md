@@ -21,3 +21,6 @@ CPY2USB is a C# application for Windows that allows you to copy data from a dire
 4. Once you're finished copying data to all of your USBs, press the Stop Monitoring button and exit the application.
 
 ###### Screenshots
+![Image of Main Window](https://raw.githubusercontent.com/mrnr1/CPY2USB/master/MainWindow.png)
+
+![Image of Settings Window](https://raw.githubusercontent.com/mrnr1/CPY2USB/master/Settings.png)
