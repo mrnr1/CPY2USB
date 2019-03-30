@@ -1,5 +1,5 @@
 # CPY2USB
-CPY2USB is a C# application for Windows that allows you to copy data from a directory to multiple USB drives upon being inserted.
+CPY2USB is a C# .NET application for Windows that allows for copying of data from a directory to multiple USB drives upon being inserted. We originally decided to write this application because we needed to load data from a preset source to over 250 USB drives. We recognized that other scripts and programs *could* help us achieve this task, however they didn't provide the flexibility that we needed.
 
 ###### Requirements
 * Windows 7 or later (x86 / x64)
