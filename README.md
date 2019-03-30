@@ -13,6 +13,7 @@ CPY2USB is a C# .NET application for Windows that allows for copying of data fro
 * Ability to delete all the files on the USB before copy operations
 * Ability to only copy if the newly inserted USB drive matches a given drive letter
 * Safely ejects USB from Windows when finished
+* Persistent settings (once you save your configuration, they will persist for your login user)
 
 ###### Usage
 1. Start the program and adjust the configuration (File -> Settings). Browse for a source folder from which data will be copied to the USBs.
