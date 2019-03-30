@@ -25,3 +25,6 @@ CPY2USB is a C# .NET application for Windows that allows for copying of data fro
 ![Image of Main Window](https://raw.githubusercontent.com/mrnr1/CPY2USB/master/MainWindow.png)
 
 ![Image of Settings Window](https://raw.githubusercontent.com/mrnr1/CPY2USB/master/Settings.png)
+
+###### TODO
+* Add support for multithreaded file transfer per instance of USB. (I.e for each directory in source folder / files over x size, copy using another thread).
